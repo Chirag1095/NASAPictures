@@ -1,5 +1,6 @@
 package com.cap.nasapictures
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -50,6 +51,16 @@ class MainActivity : AppCompatActivity() {
             object : NasaPicturesRecyclerViewAdapter.PictureClickListener {
                 override fun onPictureClick(picture: NasaPicture) {
 
+                    //First reset selection
+                    val previouslySelectedPic = pictureList.find { it.isSelected }
+                    previouslySelectedPic?.isSelected = false
+
+                    val pic = pictureList.find { it.url == picture.url }
+                    pic?.isSelected = true
+
+                    val intent = Intent(this@MainActivity, ImageDetailsActivity::class.java)
+                    intent.putExtra(ImageDetailsActivity.IMAGE_LIST, pictureList)
+                    startActivity(intent)
                 }
 
             })

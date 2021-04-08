@@ -49,30 +49,26 @@ class NasaPicturesRecyclerViewAdapter(
             adapter: NasaPicturesRecyclerViewAdapter,
             nasaPicture: NasaPicture
         ) {
-            Log.d("TESTC", "ImageView")
 
             Glide.with(context)
+                .asBitmap()
                 .load(nasaPicture.url)
                 .centerCrop()
-                .into(ivPicture)
+                .into(object : CustomTarget<Bitmap?>() {
 
-
-            /*Glide.with(context)
-                .load(nasaPicture.url)
-                .override(200, 200)
-                .into(object : CustomTarget<Drawable?>() {
                     override fun onResourceReady(
-                        resource: Drawable,
-                        transition: Transition<in Drawable?>?
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap?>?
                     ) {
-                        ivPicture.background = resource
+                        ivPicture.setImageBitmap(resource)
                     }
 
                     override fun onLoadCleared(placeholder: Drawable?) {
                         //Empty Function
                     }
 
-                })*/
+                })
+
 
             ivPicture.setOnClickListener {
                 adapter.listener.onPictureClick(nasaPicture)

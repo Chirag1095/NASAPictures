@@ -21,6 +21,8 @@ data class NasaPicture(
 
     val title: String? = null,
 
-    val url: String? = null
+    val url: String? = null,
+
+    var isSelected: Boolean = false
 
 ) : Parcelable
