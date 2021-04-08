@@ -43,7 +43,6 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/imageViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/rlToolbar" />
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

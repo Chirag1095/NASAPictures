@@ -1,8 +1,6 @@
 package com.cap.nasapictures
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
@@ -12,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.cap.nasapictures.adapters.ImageDetailsViewPagerAdapter
 import com.cap.nasapictures.models.NasaPicture
-import kotlinx.android.synthetic.main.item_image_details.*
-
 
 class ImageDetailsActivity : AppCompatActivity() {
 
@@ -51,8 +47,6 @@ class ImageDetailsActivity : AppCompatActivity() {
                 intent.getParcelableArrayListExtra(IMAGE_LIST) ?: arrayListOf()
             )
         }
-
-        Log.d("TESTC", "image list : ${imageList.size}")
     }
 
     private fun findViewsById() {
@@ -60,6 +54,8 @@ class ImageDetailsActivity : AppCompatActivity() {
         imageViewPager = findViewById(R.id.imageViewPager)
 
         rlToolbar = findViewById(R.id.rlToolbar)
+
+        rlToolbar.bringToFront()
 
         tvTitle = findViewById(R.id.tvTitle)
 
@@ -82,6 +78,8 @@ class ImageDetailsActivity : AppCompatActivity() {
 
             })
 
+        imageViewPager.adapter = adapter
+
         var position = 0
 
         for (i in 0 until imageList.size) {
@@ -90,8 +88,6 @@ class ImageDetailsActivity : AppCompatActivity() {
                 break
             }
         }
-
-        imageViewPager.adapter = adapter
 
         imageViewPager.currentItem = position
 

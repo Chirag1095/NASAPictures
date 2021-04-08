@@ -1,7 +1,6 @@
 package com.cap.nasapictures
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cap.nasapictures.models.NasaPicture
@@ -19,14 +18,14 @@ class MainActivityRepository(private val application: Application) {
 
         val data: String
 
-        val ins: InputStream = application.resources.openRawResource(
-            application.resources.getIdentifier(
-                "data",
-                "raw", application.packageName
-            )
-        )
-
         try {
+
+            val ins: InputStream = application.resources.openRawResource(
+                application.resources.getIdentifier(
+                    "data",
+                    "raw", application.packageName
+                )
+            )
 
             val stringBuilder = StringBuilder()
 
